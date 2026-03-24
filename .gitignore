@@ -1,0 +1,7 @@
+# Ignore generated proposals but keep the templates
+FS_Vector_Proposal_*.docx
+FS_Vector_Charter_Proposal_*.docx
+__pycache__/
+*.pyc
+.env
+.streamlit/secrets.toml
