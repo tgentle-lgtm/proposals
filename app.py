@@ -16,16 +16,46 @@ Run with:
 """
 
 import json
+import logging
 import os
 import re
+import sys
 import tempfile
 from datetime import date
 
-import streamlit as st
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+logger = logging.getLogger(__name__)
+logger.info("Starting app.py imports...")
 
-from generate_proposal import generate_proposal
-from generate_charter_proposal import generate_charter_proposal
-from generate_licensing_proposal import generate_licensing_proposal
+try:
+    import streamlit as st
+    logger.info("Streamlit imported OK")
+except Exception as e:
+    logger.error(f"Failed to import streamlit: {e}")
+    raise
+
+try:
+    from generate_proposal import generate_proposal
+    logger.info("generate_proposal imported OK")
+except Exception as e:
+    logger.error(f"Failed to import generate_proposal: {e}")
+    raise
+
+try:
+    from generate_charter_proposal import generate_charter_proposal
+    logger.info("generate_charter_proposal imported OK")
+except Exception as e:
+    logger.error(f"Failed to import generate_charter_proposal: {e}")
+    raise
+
+try:
+    from generate_licensing_proposal import generate_licensing_proposal
+    logger.info("generate_licensing_proposal imported OK")
+except Exception as e:
+    logger.error(f"Failed to import generate_licensing_proposal: {e}")
+    raise
+
+logger.info("All imports successful")
 
 # ── Config ────────────────────────────────────────────────────────────
 APP_PASSWORD = "JediMasterGentle2026!"
